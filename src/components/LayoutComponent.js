@@ -4,6 +4,8 @@ import NavComponent from './NavComponent';
 import HeaderComponent from './HeaderComponent';
 import MainComponent from './MainComponent';
 import FooterComponent from './FooterComponent';
+import AboutComponent from './AboutComponent';
+import { Route, Switch } from 'react-router-dom';
 
 class LayoutComponent extends Component {
     render() {
@@ -11,9 +13,12 @@ class LayoutComponent extends Component {
             <div>
                 <NavComponent/>
                 <HeaderComponent/>
-                <MainComponent/>
+                <Switch>
+                    <Route path="/index.html" component={ MainComponent }/>
+                    <Route exact path="/" component={ MainComponent } />
+                    <Route path="/about.html" component={ AboutComponent } />
+                </Switch>
                 <FooterComponent/>
-                <div>{ this.props.children }</div>
             </div>
         );
     }
